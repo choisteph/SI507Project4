@@ -11,7 +11,7 @@
 ### Python files
 * basepong_additions_1.py
 * basepong_additions_2.py
-* '''basepong.py - the main game file'''
+* **basepong.py - the main game file**
 
 ### Image assets
 * ball.png
