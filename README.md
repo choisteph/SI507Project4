@@ -26,9 +26,7 @@
 * white_square.png
 
 
-## Running the application
-### NOTE: Running the application will create a .db file called movieinfo.db. You can look at the contents and organization of this file in a database browser.
-
+## Playing PONG
 ### Opening the game
 * Open Terminal.
 * Type: python basepong.py
