@@ -34,12 +34,12 @@
 
 ### Moving your paddles
 * Pressing the keys W and S will move the lefthand paddle up and down respectively.
-* Pressing the keys O and L will move the righthand paddle up and down respectively.
+<!-- * Pressing the keys O and L will move the righthand paddle up and down respectively. -->
 
 ### Goal of the game
 * Keep the ball in play by bouncing it off your paddle
-* Try to score a point by getting the ball past your opponent's paddle
-* The first person to reach 3 points wins the game
+<!-- * Try to score a point by getting the ball past your opponent's paddle -->
+<!-- * The first person to reach 3 points wins the game -->
 
 ### Pausing
 * Press the P key to toggle the pause
