@@ -75,11 +75,10 @@ class BallDeflector(GameObject):
                 foobar
 
 class Brick(BallDeflector):
-    def deflect_ball(self):
-        deflect_ball()
-        for game_object in self.bricks:
-            game_object.remove()
-
+    def deflect_ball(self, ball, side_hit):
+        print("Brick")
+        BallDeflector.deflect_ball(self, ball, side_hit)
+        self.game.game_objects.remove(self)
 
 class EndLine(BallDeflector):
 
@@ -97,7 +96,7 @@ class EndLine(BallDeflector):
 
 class Ball(GameObject):
 
-    default_velocity = 10.0 #Number of pixels the ball should move per game cycle
+    default_velocity = 8.0 #Number of pixels the ball should move per game cycle
 
     def update(self,pressed_keys):
         self.move()
@@ -196,7 +195,7 @@ class Ball(GameObject):
 
 class Paddle (BallDeflector):
 
-    default_velocity = 6.0
+    default_velocity = 10.0
 
     def __init__(self, player = None, up_key =None, down_key =None, left_key = None, right_key = None,
         name = None, img_file = None,
@@ -335,7 +334,7 @@ class Game(object):
                 img_file = wall_imgs[2],
                 game = self))
         for i in range(11):
-            self.bricks.append(BallDeflector(
+            self.bricks.append(Brick(
                 initial_x = self.width-6*brick_height,
                 initial_y = i*brick_height,
                 img_file = wall_imgs[2],
@@ -396,7 +395,7 @@ class GameWindow(pyglet.window.Window):
         # Decide how often we want to update the game, which involves
         # first telling the game object to update itself and all its objects
         # and then rendering the updated game using
-        self.fps = 20 #Number of frames per seconds
+        self.fps = 60 #Number of frames per seconds
 
         #This tells Pyglet to call GameWindow.update() once every fps-th of a second
         pyglet.clock.schedule_interval(self.update, 1.0/self.fps)
