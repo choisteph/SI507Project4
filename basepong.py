@@ -78,6 +78,8 @@ class Brick(BallDeflector):
     def deflect_ball(self, ball, side_hit):
         print("Brick")
         BallDeflector.deflect_ball(self, ball, side_hit)
+        self.game.hit_count+=1
+
         self.game.game_objects.remove(self)
 
 class EndLine(BallDeflector):
@@ -354,7 +356,9 @@ class Game(object):
         # debug_print('Updating game state with currently pressed keys : ' + str(pressed_keys))
         for game_object in self.game_objects:
             game_object.update(pressed_keys)
-
+        if self.hit_count>0:
+            if self.hit_count % 10 == 0:
+                self.balls[0].velocity+=0.05
     def reset(self,pause=True):
         # self.score = [0,0]
         for game_object in self.game_objects:
