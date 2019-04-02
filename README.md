@@ -1,6 +1,10 @@
 # SI 507 Project 4 Read Me
+## Stephanie Choi
+
 ## This is a project that does the following:
 * Lets you play the game "Breakout!", which is a variation on the game "Pong"
+
+* The contents of this project were based off of the Sample Pyglet Code provided to our class. The forked repository can be found at:
 
 
 ## The contents of this project are as follows:
@@ -9,9 +13,9 @@
 * requirements.txt - a txt format file with the program requirements
 
 ### Python files
-* **basepong.py - the main game file**
-* basepong_additions_1.py - extra code provided by instructional team
-* basepong_additions_2.py - extra code provided by instructional team
+* **basepong.py - the main game file. This project's SI507_project4.py equivalent**
+* basepong_additions_1.py - extra files provided by instructors
+* basepong_additions_2.py - extra files provided by instructors
 
 ### Image assets
 * ball.png
