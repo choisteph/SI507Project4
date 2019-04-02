@@ -1,6 +1,6 @@
 # SI 507 Project 4 Read Me
 ## This is a project that does the following:
-* Lets you play the game "PONG"
+* Lets you play the game "Breakout!", which is a variation on the game "Pong"
 
 
 ## The contents of this project are as follows:
@@ -9,9 +9,9 @@
 * requirements.txt - a txt format file with the program requirements
 
 ### Python files
-* basepong_additions_1.py
-* basepong_additions_2.py
 * **basepong.py - the main game file**
+* basepong_additions_1.py - extra code provided by instructional team
+* basepong_additions_2.py - extra code provided by instructional team
 
 ### Image assets
 * ball.png
@@ -26,20 +26,21 @@
 * white_square.png
 
 
-## Playing PONG
+## Playing Breakout!
 ### Opening the game
 * Open Terminal.
 * Type: python basepong.py
-* The PONG game will open in a new window
+* The game will open in a new window
 
-### Moving your paddles
-* Pressing the keys W and S will move the lefthand paddle up and down respectively.
-<!-- * Pressing the keys O and L will move the righthand paddle up and down respectively. -->
+### Moving your paddle
+* Pressing the keys W and S will the paddle up and down respectively.
 
 ### Goal of the game
 * Keep the ball in play by bouncing it off your paddle
-<!-- * Try to score a point by getting the ball past your opponent's paddle -->
-<!-- * The first person to reach 3 points wins the game -->
+* Hit the white bricks on the right-hand side of the screen
+* Try to clear all the bricks! Every ten bricks you clear, the ball will move faster so beware!!
 
-### Pausing
+### Other game controls
 * Press the P key to toggle the pause
+* Press the R key to reset your game
+* Press the Q key to quit the game
