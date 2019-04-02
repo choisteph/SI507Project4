@@ -358,7 +358,8 @@ class Game(object):
             game_object.update(pressed_keys)
         if self.hit_count>0:
             if self.hit_count % 10 == 0:
-                self.balls[0].velocity+=0.05
+                self.balls[0].velocity+=0.02
+                self.paddles[0].velocity+=0.05
     def reset(self,pause=True):
         # self.score = [0,0]
         for game_object in self.game_objects:
@@ -393,6 +394,7 @@ class GameWindow(pyglet.window.Window):
         self.score_label = pyglet.text.Label('Score: 0 - 0',
                           font_name='Times New Roman',
                           font_size=14,
+                          font_color='black'
                           x=width-75, y=height-25,
                           anchor_x='center', anchor_y='center')
 
