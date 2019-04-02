@@ -243,7 +243,7 @@ class Game(object):
     side_paddle_buffer = 50 # how far away from the side wall a paddle should start
     aux_paddle_buffer = 550 # how far away a forward paddle should start
     def __init__(self,
-        ball_img = None,
+        ball_imgs = None,
         paddle_imgs=None,
         wall_imgs = None,
         width = 800,
@@ -258,11 +258,14 @@ class Game(object):
         self.height = height
         self.game_window = game_window
         self.hit_count = 0
-
-        self.balls = [Ball(img_file= ball_img,
+        self.balls = [Ball(img_file= ball_imgs[0],
                          initial_x= self.width/2,
                          initial_y = self.height/2,
-                         game=self)
+                         game=self),
+                      # Ball(img_file= ball_imgs[1],
+                      #           initial_x= self.width/2,
+                      #           initial_y = self.height/2,
+                      #           game=self),
                       ]
         self.paddles = [
             Paddle(player = 1,
@@ -356,10 +359,18 @@ class Game(object):
         # debug_print('Updating game state with currently pressed keys : ' + str(pressed_keys))
         for game_object in self.game_objects:
             game_object.update(pressed_keys)
+
         if self.hit_count>0:
             if self.hit_count % 10 == 0:
-                self.balls[0].velocity+=0.02
-                self.paddles[0].velocity+=0.05
+                self.balls[0].velocity+=0.05
+                self.paddles[0].velocity+=0.08
+        # if self.hit_count>0:
+        #     if self.hit_count % 2 == 0:
+        #         self.balls[0].velocity+=0.02
+        #         self.paddles[0].velocity+=0.05
+
+
+
     def reset(self,pause=True):
         # self.score = [0,0]
         for game_object in self.game_objects:
@@ -384,17 +395,16 @@ class Game(object):
 
 class GameWindow(pyglet.window.Window):
 
-    def __init__(self, ball_img, paddle_imgs, wall_imgs,
+    def __init__(self, ball_imgs, paddle_imgs, wall_imgs,
         width = 800, height = 450,*args,**kwargs):
 
         super(GameWindow, self).__init__(width=width, height=height,*args, **kwargs)
         self.paused = False
-        self.game = Game(ball_img,paddle_imgs, wall_imgs, width,height,self)
+        self.game = Game(ball_imgs, paddle_imgs, wall_imgs, width,height,self)
         self.currently_pressed_keys = set() #At any given moment, this holds the keys that are currently being pressed. This gets passed to Game.update() to help it decide how to move its various game objects
         self.score_label = pyglet.text.Label('Score: 0 - 0',
                           font_name='Times New Roman',
                           font_size=14,
-                          font_color='black'
                           x=width-75, y=height-25,
                           anchor_x='center', anchor_y='center')
 
@@ -430,6 +440,11 @@ class GameWindow(pyglet.window.Window):
                 self.pause()
             else:
                 self.unpause()
+        elif symbol == pyglet.window.key.F:
+            debug_print('Game Fast Mode')
+            self.game.balls[0].velocity=18
+            self.game.paddles[0].velocity=24
+
         elif not symbol in self.currently_pressed_keys:
             self.currently_pressed_keys.add(symbol)
 
@@ -472,14 +487,16 @@ def debug_print(string):
 
 def main():
     debug_print("Initializing window...")
-    ball_img = pyglet.resource.image('ball.png')
+    ball_imgs = [pyglet.resource.image('ball.png'),
+                pyglet.resource.image('ball2.png')]
+
     # ball_img = pyglet.resource.image('vertical_wall.png')
     paddle_imgs = [pyglet.resource.image('paddle1.png'),
                    pyglet.resource.image('paddle2.png')]
     wall_imgs = [pyglet.resource.image('vertical_wall.png'),
                  pyglet.resource.image('horizontal_wall.png'),
                  pyglet.resource.image('brick.png')]
-    window = GameWindow(ball_img,paddle_imgs, wall_imgs)
+    window = GameWindow(ball_imgs, paddle_imgs, wall_imgs)
     debug_print("Done initializing window! Initializing app...")
 
     pyglet.app.run()
