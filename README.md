@@ -15,6 +15,7 @@
 
 ### Image assets
 * ball.png
+* ball2.png
 * brick.png
 * curved_paddle1.png
 * curved_paddle2.png
@@ -44,3 +45,4 @@
 * Press the P key to toggle the pause
 * Press the R key to reset your game
 * Press the Q key to quit the game
+* **NEW!! Press the F key to use FAST MODE. Ball and paddle start off FAST!**
